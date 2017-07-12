@@ -1,0 +1,31 @@
+{
+  "name": "bazuka-bird",
+  "version": "1.0.0",
+  "description": "An app that is dying to know how well it performs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node service/server.js",
+    "test-small": "artillery quick --duration 30 --rate 10 --output test/demo/test/reports/small/small.json http://localhost:3000/small",
+    "test-big": "artillery quick --duration 30 --rate 10 --output test/demo/test/reports/big/big.json http://localhost:3000/big",
+    "test-small-report": "artillery quick --duration 30 --rate 10 --output test/demo/test/reports/small/small.json http://localhost:3000/small && artillery report test/demo/test/reports/small/small.json",
+    "test-big-report": "artillery quick --duration 30 --rate 10 --output test/demo/test/reports/big/big.json http://localhost:3000/big && artillery report test/demo/test/reports/big/big.json",
+    "test": "npm run test-small-report && npm run test-big-report"
+  },
+  "keywords": [
+    "performance",
+    "node",
+    "artillery"
+  ],
+  "author": "Matthew Cale",
+  "license": "ISC",
+  "dependencies": {
+    "artillery": "^1.6.0-2",
+    "aws-sdk": "^2.82.0",
+    "hapi": "^16.4.3",
+    "inert": "^4.2.0",
+    "moment": "^2.18.1"
+  },
+  "devDependencies": {
+    "request": "^2.81.0"
+  }
+}
